@@ -8,16 +8,25 @@ if not cap.isOpened():
     exit()
 
 while True:
-    ret, frame = cap.read()
+    _, frame = cap.read()
 
-    if not ret:
-        print("Can't receive frame (stream end?). Exiting ...")
+    hsv = cv.cvtColor(frame, cv.COLOR_BGR2HSV)
+
+    lower_blue = np.array([110, 50, 50])
+    upper_blue = np.array([130, 255, 255])
+
+    mask = cv.inRange(hsv, lower_blue, upper_blue)
+
+    res = cv.bitwise_and(frame, frame, mask=mask)
+
+    cv.imshow('frame', frame)
+    cv.imshow('mask', mask)
+    cv.imshow('res', res)
+
+    k = cv.waitKey(5) & 0xFF
+    if k == 27:
         break
-
-    gray = cv.cvtColor(frame, cv.COLOR_BGR2GRAY)
-
-    cv.imshow('frame', gray)
-
+    
     if cv.waitKey(1) == ord('q'):
         break
 
