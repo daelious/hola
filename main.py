@@ -1,8 +1,7 @@
-from sys import flags
 import cv2 as cv
 from cv2 import grabCut
-import cv2
-# import numpy as np
+
+print(cv.__version__)
 
 cap = cv.VideoCapture(0)
 if not cap.isOpened():
