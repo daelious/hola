@@ -11,7 +11,7 @@ if not cap.isOpened():
 
 while True:
     _, frame = cap.read()
-    face_cascade = cv.CascadeClassifier('haarcascade_frontalface_default.xml')
+    face_cascade = cv.CascadeClassifier('./cascades/haarcascade_frontalface_default.xml')
     gray = cv.cvtColor(frame, cv.COLOR_BGR2GRAY)
 
     faces = face_cascade.detectMultiScale(
