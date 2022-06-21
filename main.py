@@ -13,7 +13,7 @@ font = cv2.FONT_HERSHEY_SIMPLEX
 
 id = 0
 
-names = ['None', 'Keith']
+names = ['None', 'Keith', 'Kaylin']
 
 cap = cv.VideoCapture(0)
 cap.set(3, 640)
